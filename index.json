@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "catalogId": "kodra-skills",
+  "generatedAt": "2026-11-12T16:26:30Z",
+  "contentCommit": "ddd8ca684c2ef467a424ea29f2aa9acf04b44519",
+  "baseUrl": "https://raw.githubusercontent.com/ko-system/kodra-skills/ddd8ca684c2ef467a424ea29f2aa9acf04b44519/",
+  "skills": [
+    {
+      "slug": "accessibility-audit",
+      "name": "Accessibility audit",
+      "description": "WCAG 2.1 AA checklist and fixes for React apps covering alt text, form labels, keyboard access, visible focus, color contrast, headings, landmarks and motion.",
+      "version": "1.0.0",
+      "tags": ["ui", "a11y", "accessibility", "wcag", "qa"],
+      "featured": true,
+      "hasScripts": true,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "ed9e9256fbc48a5e24b215579c6c4f2816f5f19da9ba01d8f11923d4fafa3efb",
+          "size": 6210
+        },
+        {
+          "path": "references/checklist.md",
+          "sha256": "f4062c05e359aa5f15c0cf75b5ecee8a0df7478233dbe5e089c578716b4e3ecc",
+          "size": 6729
+        },
+        {
+          "path": "scripts/a11y_static_scan.js",
+          "sha256": "c15ef377e8faf54973f2c80fefec19eb48a5cd11afc3bbaa3dccb55aa15a24ca",
+          "size": 12233
+        }
+      ],
+      "packageSha256": "4ebd0d94e46266a4ad93e21f04fe79eb82793d32e50d53c5a493ef762f14eb83"
+    },
+    {
+      "slug": "crud-dashboard",
+      "name": "CRUD admin dashboard",
+      "description": "Admin and back-office screens with data tables, search and filters, server-side pagination, sorting, create/edit dialogs, bulk actions, confirmations and empty states.",
+      "version": "1.0.0",
+      "tags": ["ui", "dashboard", "admin", "crud", "tables"],
+      "featured": true,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "297f1b2148c322d7905426b54331dbda41a2b99575b76877bac3c86142ea78aa",
+          "size": 6297
+        },
+        {
+          "path": "references/data-table.md",
+          "sha256": "2cd03a94cef61122c2a3574a702bdb8f1326c787359b80f6df3b509ebcb49fa4",
+          "size": 17826
+        }
+      ],
+      "packageSha256": "5db87fae967a6b83e13e0f5b1f34132ed226866284bf01366945e239d1d1f24f"
+    },
+    {
+      "slug": "data-fetching-states",
+      "name": "Data fetching states",
+      "description": "TanStack Query patterns for React apps covering query keys, loading skeletons, empty and error states, retries, mutations with invalidation, optimistic updates and pagination.",
+      "version": "1.0.0",
+      "tags": ["data", "tanstack-query", "react-query", "loading", "ux"],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "088763b8ad279e9c223a44c952c6b072006dadb440a8d0770bf849fdb51a506b",
+          "size": 8066
+        },
+        {
+          "path": "references/optimistic-and-pagination.md",
+          "sha256": "3fb9786a76d411f347040ac61eaf7b8efb53336149d43f0d5bb75f756eea87ef",
+          "size": 6380
+        }
+      ],
+      "packageSha256": "f2f06d1c482e99ac752476f368dd9a66df71507d297bd33931e20be3ef9632a1"
+    },
+    {
+      "slug": "database-schema-design",
+      "name": "Database schema design",
+      "description": "Relational modelling for Postgres apps covering keys, relationships, constraints, indexes, timestamps, soft deletes, money and enums, drizzle schemas and migrations, and row-level security notes.",
+      "version": "1.0.0",
+      "tags": ["database", "postgres", "schema", "drizzle", "sql", "security"],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "ef58e769c0f36aebcfed4e97e1e85a86bf48fafd4f9618384dd7ee286b55ee44",
+          "size": 7365
+        },
+        {
+          "path": "references/patterns.md",
+          "sha256": "9ba75e982e11a015ad7bcd63ddc85ae7f9ca838f350a0150f4f3aa58a9238ddc",
+          "size": 9442
+        }
+      ],
+      "packageSha256": "cccf8efdab1aa6ed6195c52419aa2fb434cc3045418565a350f3cfbcecd1134f"
+    },
+    {
+      "slug": "ecommerce-checkout",
+      "name": "E-commerce checkout",
+      "description": "Cart state, server-priced Stripe Checkout redirects, verified webhooks, idempotent order states and success/cancel pages, without exposing secret keys or trusting client prices.",
+      "version": "1.0.0",
+      "tags": ["ecommerce", "payments", "stripe", "cart", "orders"],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "d44b7b62a3a4cbd319073ba0a4e324c71df8c6933b489a8259a5d73bcf94bb49",
+          "size": 7533
+        },
+        {
+          "path": "references/server-routes.md",
+          "sha256": "ca79f3f9ba24bd2fe231d70df7a4aef3ecb58b99d161e931d6ab8b7ede71de61",
+          "size": 10997
+        }
+      ],
+      "packageSha256": "4d7227402c961499897e0d68457c32db8e831a0b4711324d41e6c6ff3b506b76"
+    },
+    {
+      "slug": "forms-validation",
+      "name": "Forms and validation",
+      "description": "Accessible forms with react-hook-form, zod and shadcn/ui Form, covering inline errors, pending and disabled states, success feedback and server-side validation with shared schemas.",
+      "version": "1.0.0",
+      "tags": ["forms", "validation", "react-hook-form", "zod", "ux"],
+      "featured": true,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "c97339cf2f98f9bd3396ccd5b4160831733a95b1da9a626ea9624fb2b9136f15",
+          "size": 11175
+        },
+        {
+          "path": "references/advanced-patterns.md",
+          "sha256": "1ba693ca31444417db78e58030a4980641fc125f0b0c110a8ae66f349ccfbaf9",
+          "size": 8229
+        }
+      ],
+      "packageSha256": "e1b9ea8aea61108b85173cc299a99b3fa17d16f91f676f40c66a45d0f17d08ba"
+    },
+    {
+      "slug": "landing-page",
+      "name": "Landing page",
+      "description": "Build conversion-focused marketing pages with a clear hero, social proof, features, pricing, FAQ and a final call to action, using the app's section blocks.",
+      "version": "1.0.0",
+      "tags": ["ui", "marketing", "landing", "copywriting", "conversion"],
+      "featured": true,
+      "hasScripts": true,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "dc93f50453f3aa9b00d77dbcf52ba75d439380af125848cbf6ce92304ed2fde5",
+          "size": 7086
+        },
+        {
+          "path": "references/copy-formulas.md",
+          "sha256": "1da5ece3288ed1521bdae19e685f076f0f38a24f16dd90ee8223a5ee0d8772cb",
+          "size": 3699
+        },
+        {
+          "path": "references/section-patterns.md",
+          "sha256": "6264a4d17dfd320cca69950e1ea65a258bf305a456be0a81f9c5b3559375d346",
+          "size": 7525
+        },
+        {
+          "path": "scripts/audit_landing_sections.js",
+          "sha256": "b4c233b6c52f81d1148785d3d5b168dd563d600add0efc8dfab2d3a8e8ddc4bd",
+          "size": 12607
+        }
+      ],
+      "packageSha256": "2814a4ed6f4ddb90902fb8297b0fe93a7527d5b3bacb499bf18d1d3a333e84c9"
+    },
+    {
+      "slug": "performance-web-vitals",
+      "name": "Performance and Web Vitals",
+      "description": "Improve LCP, CLS and INP in React apps through image sizing and formats, lazy loading, route code splitting, font loading, bundle trimming and render performance.",
+      "version": "1.0.0",
+      "tags": ["performance", "web-vitals", "images", "bundle", "fonts"],
+      "featured": false,
+      "hasScripts": true,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "29c63fc3f37f87ec1e31663350c974f0c104e9583cfdc2d5f5a1c288fe512dee",
+          "size": 6860
+        },
+        {
+          "path": "references/checklist.md",
+          "sha256": "97e6f87db3a7f1d97e2e5eaef1f11a4b9f92e98234e430af91ce2767a3b8da25",
+          "size": 4794
+        },
+        {
+          "path": "scripts/find_large_assets.js",
+          "sha256": "375a05c8b1474cefa5111f705a2d7f9f7d2bed0d21c1b4c08b35f765ef9b06df",
+          "size": 9860
+        }
+      ],
+      "packageSha256": "f9de576b9a70b24d019d796c8624b13f831cf8a658cb400fb454cbd1d389797e"
+    },
+    {
+      "slug": "qa-smoke-tests",
+      "name": "QA smoke tests",
+      "description": "Small, reliable Playwright smoke tests for generated apps that cover page loads, navigation, the main create/read/update flow, form validation and auth gates, run with run_tests.",
+      "version": "1.0.0",
+      "tags": ["testing", "qa", "playwright", "e2e", "smoke"],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "99257683f0e196652e8553898d63a57e660ff0179970c51bb296b02db0ae9b00",
+          "size": 5317
+        },
+        {
+          "path": "references/spec-templates.md",
+          "sha256": "a1c8338f69708439fffb344168e5c12effebb83cacee2b4cf25bbfad4ce05eee",
+          "size": 7406
+        }
+      ],
+      "packageSha256": "09cbbc80280076aa6edf7b6252198a88596cb27f03a293f24c5a052d0ca219cb"
+    },
+    {
+      "slug": "responsive-layout",
+      "name": "Responsive layout",
+      "description": "Mobile-first layouts with Tailwind breakpoints, fluid type, 44px touch targets, safe areas and container queries, so pages work from 320px phones to wide desktops.",
+      "version": "1.0.0",
+      "tags": ["ui", "responsive", "mobile", "tailwind", "layout"],
+      "featured": false,
+      "hasScripts": true,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "ba7226bca9c91dc2862cae47780ed7ff5f2bab2b22d19e5f132e628212178512",
+          "size": 6915
+        },
+        {
+          "path": "references/patterns.md",
+          "sha256": "952bd0210adbe63fc33f17ad708e2519eb0918ad370cb6292baf4df6769cb369",
+          "size": 5522
+        },
+        {
+          "path": "scripts/find_fixed_widths.js",
+          "sha256": "e446474b63429f6061168fc56bfb3dd475b09f10bc69f46527d4c505df188a74",
+          "size": 7792
+        }
+      ],
+      "packageSha256": "953e8d1de4ffba02aea216a7617c75d09680406c448593c02d22d9c02d4d83dc"
+    },
+    {
+      "slug": "seo-metadata",
+      "name": "SEO metadata",
+      "description": "Page titles, meta descriptions, Open Graph and Twitter cards, canonical URLs, sitemap, robots and JSON-LD structured data for Vite SPAs and Next.js App Router apps.",
+      "version": "1.0.0",
+      "tags": ["seo", "metadata", "open-graph", "sitemap", "json-ld"],
+      "featured": false,
+      "hasScripts": true,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "0713d0b1f6321e2405c353a4ef8694419bf3a04abde4721a80e181d0291351be",
+          "size": 9898
+        },
+        {
+          "path": "references/structured-data.md",
+          "sha256": "983086fdd8cc5be266d1e626667bbb522e4bf98e4b60f8d31f243b1fccb57996",
+          "size": 4914
+        },
+        {
+          "path": "scripts/check_meta.js",
+          "sha256": "11ccca178cb2692b491f6bb15523d82dcad7689215f3a77d09ff972d18cfc140",
+          "size": 13933
+        }
+      ],
+      "packageSha256": "e682bf426197bbbf6c144c15894bc0d603bdc5b020b9edb70cc06a46ebdf72e9"
+    },
+    {
+      "slug": "thai-localization",
+      "name": "Thai localization",
+      "description": "Thai-language apps done right with Thai fonts and line-height, word-aware line breaking via Intl.Segmenter, Buddhist-era dates, THB formatting, Thai addresses and phones, and i18n setup.",
+      "version": "1.0.0",
+      "tags": [
+        "i18n",
+        "thai",
+        "localization",
+        "typography",
+        "dates",
+        "currency"
+      ],
+      "featured": true,
+      "hasScripts": true,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "d33c7e45e7ee3a06bbc4b54565065a630d1cb09076df9985aaabf31d4f53428e",
+          "size": 8484
+        },
+        {
+          "path": "references/i18n-setup.md",
+          "sha256": "8bffdcd43a486d9ed74b24b954d85353c8a0fe40c68ad3c931bba037024eb61c",
+          "size": 7538
+        },
+        {
+          "path": "scripts/find_hardcoded_strings.js",
+          "sha256": "801fc2f6ed655ad3f8d6d2a10953e6092e9da8435d3e6351346d2fe8cd778cde",
+          "size": 10119
+        }
+      ],
+      "packageSha256": "645830f938fb3c0849db7c8983a81fa1cd2531cebc3ab6e12d4a73a8d50b2ee8"
+    }
+  ]
+}
