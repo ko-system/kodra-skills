@@ -1,7 +1,8 @@
 // audit_landing_sections (read-only MustardScript).
-// Audits a landing page: one h1, a CTA in the hero, standard sections,
-// placeholder copy, dead links and image basics. Follows local component
-// imports one level deep.
+// Audits a landing page: one h1 and a primary CTA in the hero are required;
+// other sections are only reported, because the right set depends on the
+// page narrative. Also checks placeholder copy, dead links and image basics.
+// Follows local component imports one level deep.
 // ARGS: { file?: string } (app-relative path of the page component)
 
 const PAGE_CANDIDATES = [
@@ -19,16 +20,29 @@ const MAX_READ_BYTES = 262144;
 const SECTION_PATTERNS = {
   hero: /<Hero\b|<h1\b/,
   socialProof:
-    /<(Testimonials|LogoMarquee)\b|testimonial|trusted by|reviews\b|rating/i,
+    /<(Testimonials|LogoMarquee|Marquee)\b|testimonial|trusted by|reviews\b|rating/i,
   features: /<(FeatureGrid|BentoGrid)\b|features?\b|benefits?\b/i,
+  showcase: /<(StatShowcase|ImageMosaic|StatCard)\b|gallery|portfolio/i,
   howItWorks: /<StepList\b|how it works|three steps|step 1\b/i,
   pricing: /<PricingTable\b|pricing|per month|\/\s*(month|mo)\b|เดือน|฿\s?\d/i,
   faq: /<Faq\b|\bFAQ\b|frequently asked|<Accordion\b/i,
   finalCta: /<CtaBand\b|id=["'](cta|get-started|contact)["']/i,
   footer: /<(SiteFooter|footer)\b/,
 };
-const RECOMMENDED_SECTIONS = ["hero", "features", "finalCta", "footer"];
-const OPTIONAL_SECTIONS = ["socialProof", "howItWorks", "pricing", "faq"];
+// Only the hero is required. Everything else depends on the narrative
+// (story-led, product tour, editorial, catalog-first, app-like) and on the
+// real content the owner has, so it is reported, never penalized.
+const RECOMMENDED_SECTIONS = ["hero"];
+const OPTIONAL_SECTIONS = [
+  "features",
+  "showcase",
+  "socialProof",
+  "howItWorks",
+  "pricing",
+  "faq",
+  "finalCta",
+  "footer",
+];
 const PLACEHOLDER_PATTERN =
   /lorem ipsum|dolor sit amet|your (tagline|headline|company|product|brand) here|\bfeature (one|two|three|[0-9])\b|placeholder text|\bacme (inc|corp)\b|\bjohn doe\b|\bjane doe\b|\bTODO\b|\bTBD\b/gi;
 
@@ -319,22 +333,23 @@ async function main() {
       (key) => !sections[key],
     );
     const missingOptional = OPTIONAL_SECTIONS.filter((key) => !sections[key]);
+    const detected = OPTIONAL_SECTIONS.filter((key) => sections[key]);
     if (missingRecommended.length === 0) {
       checks.push(
         check(
           "sections",
           "pass",
-          "Hero, features, final CTA and footer are present.",
+          "Hero present. Other sections detected: " +
+            (detected.length === 0 ? "none" : detected.join(", ")) +
+            ". Include further sections only when the page narrative and real content call for them.",
         ),
       );
     } else {
       checks.push(
         check(
           "sections",
-          "warn",
-          "Missing recommended sections: " +
-            missingRecommended.join(", ") +
-            ".",
+          "fail",
+          "No hero found. Open the page with a hero or page header that states the promise and holds the primary CTA.",
         ),
       );
     }

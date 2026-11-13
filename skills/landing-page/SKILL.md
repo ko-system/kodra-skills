@@ -1,21 +1,21 @@
 ---
 slug: landing-page
 name: Landing page
-version: 1.0.0
-description: Build conversion-focused marketing pages with a clear hero, social proof, features, pricing, FAQ and a final call to action, using the app's section blocks.
+version: 1.1.0
+description: Build conversion-focused marketing pages with a narrative chosen for the business and design direction, a clear hero and primary CTA, and only the sections real content supports.
 when_to_use: When creating or redesigning a home page, product page, launch page or any marketing page whose job is to get a visitor to sign up, buy, book or contact.
 tags: [ui, marketing, landing, copywriting, conversion]
 roles: [ui-designer, frontend-developer, copywriter]
 license: MIT
 references:
   - file: references/section-patterns.md
-    description: JSX patterns for each section built from the scaffold blocks, plus layout variations.
+    description: JSX patterns for each section built from the scaffold blocks and their variants, plus layout variations.
   - file: references/copy-formulas.md
     description: Headline, subhead, CTA and FAQ copy formulas with good and bad examples.
 scripts:
   - name: audit_landing_sections
     file: scripts/audit_landing_sections.js
-    description: Checks a landing page for exactly one h1, a call to action in the hero, missing standard sections and placeholder copy.
+    description: Checks a landing page for exactly one h1 and a primary call to action in the hero, reports which other sections exist, and flags placeholder copy.
     writes: false
 ---
 
@@ -38,24 +38,35 @@ Write these down (in DESIGN.md if the app has one) before touching JSX:
   supplied them, leave the section out or use a clearly marked TODO in the
   content data, not in visible copy.
 
-## 2. Section order (default)
+## 2. Pick a narrative, not a fixed order
 
-| #   | Section         | Purpose                                    | Block                         |
-| --- | --------------- | ------------------------------------------ | ----------------------------- |
-| 1   | Header          | Brand, 3-5 nav links, primary CTA          | `SiteHeader`                  |
-| 2   | Hero            | Promise + primary CTA above the fold       | `Hero`                        |
-| 3   | Proof strip     | Logos, rating or one hard number           | `LogoMarquee` or inline stats |
-| 4   | Problem/outcome | Why the status quo hurts, what changes     | `Section` + `SectionHeader`   |
-| 5   | Features        | 3-6 benefits, each tied to an outcome      | `FeatureGrid` or `BentoGrid`  |
-| 6   | How it works    | 3-4 steps when the process is unfamiliar   | `StepList`                    |
-| 7   | Testimonials    | Real quotes with name and role             | `Testimonials`                |
-| 8   | Pricing         | Plans, or "from" price and what's included | `PricingTable`                |
-| 9   | FAQ             | Objections answered plainly                | `Faq`                         |
-| 10  | Final CTA       | Restate promise + same primary CTA         | `CtaBand`                     |
-| 11  | Footer          | Contact, legal, secondary links            | `SiteFooter`                  |
+There is no single section order. Choose the narrative from the business, the
+primary action and the app's design direction (archetype), then pick block
+variants that fit it. Every narrative needs a hero (or page header) with the
+primary CTA; everything else is optional and appears only with real content.
+
+| Narrative          | Fits                                       | Typical flow                                                                                           |
+| ------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| Story-led          | Restaurants, makers, studios, nonprofits   | Statement hero → origin or process with real photos → the offer (menu, services) → proof → visit/contact |
+| Product tour       | Apps, SaaS, devices                        | Split hero with the product → 3-4 feature chapters (alternating) → how it works → pricing → FAQ → CTA   |
+| Editorial          | Portfolios, consultants, events, writing   | Editorial hero → narrow reading column with pull quotes and full-bleed images → selected work → contact |
+| Catalog-first      | Shops, listings, menus, rentals            | Compact hero → filter + item grid near the top → categories → delivery/booking details → trust          |
+| Single-screen      | Booking, quotes, calculators, sign-ups     | The form or tool is the hero; short supporting panels beside or below                                   |
+| Proof-led          | Clinics, trades, B2B services              | Split hero → hard numbers (`StatShowcase`) → services → case or before/after → testimonials → CTA      |
+
+Block variants to reach for (see the design-patterns guide for the archetype
+mapping): `Hero` split, centered, full-bleed-media, editorial, collage or
+minimal-statement; `Section` width, spacing and tone; `FeatureGrid` cards,
+list, icon-row, numbered or alternating; `CtaBand` band, card, inline or split;
+`StatShowcase`, `ImageMosaic`, `Marquee`, `SectionDivider`. Two landing
+pages for different businesses should not share the same sequence of blocks.
+
+Every page also gets at least one bespoke section built from scratch for this
+business (a menu board, a service-area map, a before/after, a price
+calculator, a history timeline) and one signature moment from the direction.
 
 Drop sections that have no real content. A short honest page beats a long
-padded one. Keep sections 1, 2, 5 and 10 at minimum.
+padded one.
 
 ## 3. Hero rules
 
@@ -66,6 +77,7 @@ padded one. Keep sections 1, 2, 5 and 10 at minimum.
 - Primary CTA visible without scrolling at 375x667 and 1280x800. Put it in the
   `actions` prop of `Hero`; link to the real destination (route, `mailto:`,
   `tel:`, form anchor), never `href="#"`.
+- Pick the `Hero` variant from the narrative and direction, not by habit.
 - Media: a real product screenshot, photo or illustration that shows the
   outcome. Set explicit `width`/`height` on the image and don't lazy-load the
   hero image (it is usually the LCP element).
@@ -83,19 +95,24 @@ Write specific, plain copy in the app's language. No lorem ipsum, no
 ## 5. Layout and visual rhythm
 
 - Use semantic tokens (`bg-background`, `bg-secondary`, `text-muted-foreground`),
-  never raw palette classes. Alternate `Section tone="muted"` to separate blocks
-  instead of adding borders and shadows everywhere.
+  never raw palette classes. Change `Section` `width`, `spacing` and `tone`
+  between sections (a narrow airy story, a full-width inverted band, a tight
+  muted list) instead of adding borders and shadows everywhere.
 - Vary section shapes: a grid, then a split image/text, then a full-width quote.
   Avoid a page that is only stacked identical card grids.
+- Space within a group (heading and its text, a card's parts) is smaller than
+  space between groups; not every section is equally loud.
 - One bold element per page (the hero visual or a type treatment). Keep the rest calm.
 - Wrap content groups in `<Reveal>` with staggered `delay={index * 80}`;
-  `BentoGrid`, `Testimonials` and `PricingTable` already reveal themselves.
+  `BentoGrid`, `Testimonials`, `PricingTable`, `StatShowcase` and
+  `ImageMosaic` already reveal themselves.
 - Mobile first: single column below `md`, CTA buttons full width on phones
   (`w-full sm:w-auto`), tap targets at least 44px.
 
 ## 6. Conversion details
 
-- Repeat the primary CTA after features or pricing and in the final `CtaBand`.
+- Repeat the primary CTA where the decision happens (after the offer or
+  pricing) and at the end of the page.
 - Anchor navigation: give sections `id`s (`<Section id="pricing">`) and link to
   `#pricing`; add `scroll-mt-20` so the sticky header does not cover headings.
 - Forms on the page: ask for the minimum (email, or name + phone). Show inline
@@ -107,6 +124,8 @@ Write specific, plain copy in the app's language. No lorem ipsum, no
 
 ## 7. Done checklist
 
+- [ ] The narrative fits the business; block variants follow the direction.
+- [ ] At least one bespoke section and one signature moment.
 - [ ] One h1, in the hero; section titles are h2 in order.
 - [ ] Primary CTA above the fold on mobile and desktop, pointing at a real target.
 - [ ] Every claim, number, logo and quote is real or the section is removed.
@@ -121,5 +140,7 @@ Write specific, plain copy in the app's language. No lorem ipsum, no
 imports. Args (all optional): `{ "file": "src/pages/Index.tsx" }`. Without
 `file` it tries `src/pages/Index.tsx`, `app/page.tsx`, `src/app/page.tsx`,
 `pages/index.tsx` and `src/pages/index.tsx`. It returns `checks` (pass, warn or
-fail), detected `sections`, and `placeholders`. It is heuristic: confirm
-failures by reading the code before changing anything.
+fail), detected `sections`, `missingOptional` (reported only; leave them out
+when the narrative or real content does not call for them) and
+`placeholders`. Only a missing hero, h1 or hero CTA fails. It is heuristic:
+confirm failures by reading the code before changing anything.

@@ -1,12 +1,15 @@
 # Landing page section patterns
 
 These patterns use the blocks in `src/components/app/` that ship with the KODRA
-Vite scaffold. In a Next.js app or an older app without these blocks, build the
+Vite scaffold. The skeleton below is one example (a proof-led page for a
+clinic), not the default order: choose the narrative and each block's variant
+from the app's design direction, and replace at least one section with
+something built only for this business. In a Next.js app or an older app without these blocks, build the
 same structure with shadcn/ui primitives and the same Tailwind tokens. Keep
 content in typed arrays at the top of the page file (or `src/content/*.ts`) so
 copy edits never touch layout code.
 
-## Page skeleton (Vite + react-router)
+## Example page skeleton (Vite + react-router)
 
 ```tsx
 // src/pages/Index.tsx
@@ -72,6 +75,7 @@ export default function Index() {
       />
       <main id="main">
         <Hero
+          variant="split"
           title="Move without pain again, in fewer sessions"
           description="Hands-on physiotherapy with a plan you can follow at home, for back, knee and sports injuries."
           actions={
@@ -102,17 +106,18 @@ export default function Index() {
         />
         <Section id="services" className="scroll-mt-20">
           <SectionHeader title="Care that fits around your week" />
-          <FeatureGrid items={features} />
+          <FeatureGrid variant="list" items={features} />
         </Section>
-        <Section id="how" tone="muted" className="scroll-mt-20">
+        <Section id="how" tone="muted" spacing="airy" className="scroll-mt-20">
           <SectionHeader title="From first call to back on your feet" />
-          <StepList items={steps} />
+          <StepList variant="timeline" items={steps} />
         </Section>
-        <Section id="faq" className="scroll-mt-20">
+        <Section id="faq" width="narrow" className="scroll-mt-20">
           <SectionHeader title="Questions before you book" />
           <Faq items={faqs} />
         </Section>
         <CtaBand
+          variant="band"
           title="Your first assessment takes 60 minutes"
           description="Leave with a diagnosis and a written plan."
           actions={
@@ -128,7 +133,10 @@ export default function Index() {
 }
 ```
 
-(`steps` is a `Feature[]` like `features`.) In Next.js the same page lives in
+(`steps` is a `Feature[]` like `features`. Other narratives swap these
+blocks: an editorial page might open with `<Hero variant="editorial">` and a
+`<Section width="narrow">` story; a catalog page puts the item grid right
+after a compact hero.) In Next.js the same page lives in
 `app/page.tsx`, uses `next/link` (`<Link href=...>`) and `next/image` for the
 hero with `priority`.
 
@@ -137,15 +145,14 @@ hero with `priority`.
 Only with real data from the owner.
 
 ```tsx
-// Numbers: one row of 3 facts, each with its source in mind.
-<dl className="mx-auto grid max-w-5xl grid-cols-1 gap-6 px-5 py-10 sm:grid-cols-3">
-  {stats.map((s) => (
-    <div key={s.label} className="text-center">
-      <dt className="text-sm text-muted-foreground">{s.label}</dt>
-      <dd className="mt-1 text-3xl font-semibold"><CountUp value={s.value} suffix={s.suffix} /></dd>
-    </div>
-  ))}
-</dl>
+// Numbers: a few real facts as a typographic moment (row, grid or spotlight).
+<StatShowcase
+  variant="row"
+  items={[
+    { value: 1280, label: "Patients treated in 2025" },
+    { value: 4.9, decimals: 1, label: "Average rating on Google" },
+  ]}
+/>
 
 // Logos: names the owner gave you.
 <LogoMarquee label="Trusted by teams at" items={[{ name: "Acme Foods" }, { name: "Riverbank Co-op" }]} />

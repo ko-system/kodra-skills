@@ -25,7 +25,8 @@ version bump; the publish workflow rejects unbumped changes.
 
 | Skill                    | What it covers                                                          | Script                   |
 | ------------------------ | ----------------------------------------------------------------------- | ------------------------ |
-| `landing-page`           | Conversion-focused marketing pages: hero, proof, features, pricing, FAQ | `audit_landing_sections` |
+| `landing-page`           | Conversion pages with six narrative structures chosen by business/style | `audit_landing_sections` |
+| `visual-design-craft`    | Design directions, detail checklist, critique rubric (DSH-adapted, MIT) |                          |
 | `responsive-layout`      | Mobile-first breakpoints, fluid type, touch targets, container queries  | `find_fixed_widths`      |
 | `accessibility-audit`    | WCAG 2.1 AA for React: alt text, labels, focus, contrast, keyboard      | `a11y_static_scan`       |
 | `seo-metadata`           | Titles, meta, Open Graph, sitemap, robots, JSON-LD (Vite and Next.js)   | `check_meta`             |

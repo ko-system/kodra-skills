@@ -1,7 +1,7 @@
 ---
 slug: responsive-layout
 name: Responsive layout
-version: 1.0.0
+version: 1.1.0
 description: Mobile-first layouts with Tailwind breakpoints, fluid type, 44px touch targets, safe areas and container queries, so pages work from 320px phones to wide desktops.
 when_to_use: When building any new page or component, when a layout breaks or scrolls sideways on mobile, or before shipping a page that was designed only at desktop width.
 tags: [ui, responsive, mobile, tailwind, layout]
@@ -31,7 +31,8 @@ phones, `sm:` from 640px, `md:` 768px, `lg:` 1024px, `xl:` 1280px, `2xl:` 1536px
 2. **Unprefixed = mobile.** Write `grid-cols-1 md:grid-cols-3`, never a bare
    `grid-cols-3` for content grids.
 3. **Constrain, don't fix.** Prefer `w-full max-w-md` over `w-[448px]`;
-   `max-w-7xl mx-auto px-5` for page containers; `max-w-prose` for text.
+   `max-w-prose` for text. The page container width comes from the app's
+   design tokens, not a fixed `max-w-7xl` (see Page containers below).
 4. **Touch targets >= 44x44px** for anything tappable on mobile (`h-11`,
    `min-h-11 min-w-11`, or padding). shadcn `size="icon"` is 40px; use
    `className="h-11 w-11"` for primary mobile icon buttons.
@@ -49,7 +50,7 @@ phones, `sm:` from 640px, `md:` 768px, `lg:` 1024px, `xl:` 1280px, `2xl:` 1536px
 
 | Need                           | Pattern                                                                         |
 | ------------------------------ | ------------------------------------------------------------------------------- |
-| Page container                 | `mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8`                                 |
+| Page container                 | `mx-auto w-full max-w-container px-gutter` (token-based; see below)             |
 | Stack -> row                   | `flex flex-col gap-4 md:flex-row md:items-center`                               |
 | Card grid                      | `grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3`                          |
 | Auto-fit grid (no breakpoints) | `grid gap-6 [grid-template-columns:repeat(auto-fit,minmax(16rem,1fr))]`         |
@@ -59,6 +60,23 @@ phones, `sm:` from 640px, `md:` 768px, `lg:` 1024px, `xl:` 1280px, `2xl:` 1536px
 | Long words / URLs              | `break-words` (`overflow-wrap:anywhere` via `[overflow-wrap:anywhere]`)         |
 | Wide tables                    | wrapper `overflow-x-auto`, or switch to stacked cards below `md`                |
 | Hide/show                      | `hidden md:block` / `md:hidden`; never duplicate large content trees            |
+
+## Page containers
+
+The container width is part of the app's design direction, so it lives in the
+tokens: `--container-max` in the `kodra:design-tokens` block of the global
+stylesheet, exposed as `max-w-container`, `max-w-container-narrow` (reading
+columns) and `max-w-container-wide`. The horizontal gutter is `px-gutter` and
+section rhythm is `py-section` / `py-section-tight` / `py-section-airy`; all
+scale with `--density`. Use the scaffold's `Section` block (`width`:
+narrow, default, wide, full) instead of repeating container classes.
+
+Typical `--container-max` by archetype: editorial 64-72rem (with a narrow
+reading column), luxury-minimal and organic-craft about 72rem, tech-dark and
+corporate-trust about 80rem, swiss-grid 80-96rem, data-dense-pro full width.
+In an older app without these utilities, pick one width for the app from that
+range (for example `max-w-6xl`) and reuse it everywhere; never mix container
+widths at random.
 
 Flex children that contain text need `min-w-0` so `truncate` works and they can
 shrink: `<div className="min-w-0 flex-1"><p className="truncate">...</p></div>`.
@@ -79,8 +97,11 @@ shrink: `<div className="min-w-0 flex-1"><p className="truncate">...</p></div>`.
 }
 ```
 
-Use breakpoint classes when you only need two or three sizes; use `clamp()`
-when a heading must scale smoothly. Thai text needs looser line-height (1.35
+In apps with the KODRA design preset, size text with the modular scale
+(`text-step-0` … `text-step-6`, `text-display`), which follows the direction's
+`--type-scale`; add responsive steps (`text-step-3 md:text-step-5`) instead of
+fixed pixel sizes. Otherwise use breakpoint classes when you only need two or
+three sizes, and `clamp()` when a heading must scale smoothly. Thai text needs looser line-height (1.35
 headings, 1.7 body); see the thai-localization skill.
 
 ## Container queries
@@ -105,8 +126,9 @@ sidebar vs main column), not the viewport. Tailwind 3.4 needs the
   links; the button has `aria-label` and `aria-expanded`. `SiteHeader` in the
   scaffold already does this.
 - At `md` and up: inline links. Keep at most 5-6 top-level items.
-- Sticky headers: `sticky top-0 z-40 bg-background/90 backdrop-blur`; add
-  `scroll-mt-20` to anchor targets.
+- Sticky headers: `sticky top-0 z-40` with a background that matches the
+  direction (solid, or translucent with `backdrop-blur` when the direction uses
+  glass); add `scroll-mt-20` to anchor targets.
 
 ## Responsive images
 
@@ -119,7 +141,9 @@ sidebar vs main column), not the viewport. Tailwind 3.4 needs the
 ## Motion and input
 
 - Hover-only interactions must also work on tap and keyboard. Use
-  `hover:` for decoration only, never to reveal required actions.
+  `hover:` for decoration only, never to reveal required actions, and limit
+  hover effects to real pointers: `@media (hover: hover)` (Tailwind 3.4:
+  `future: { hoverOnlyWhenSupported: true }`; Tailwind 4 does this by default).
 - Use `motion-safe:` / `motion-reduce:` for animations.
 - Use `inputMode` and `autoComplete` on inputs (`inputMode="numeric"`,
   `autoComplete="tel"`) so phones show the right keyboard.
@@ -127,7 +151,7 @@ sidebar vs main column), not the viewport. Tailwind 3.4 needs the
 ## Verify
 
 1. Run `find_fixed_widths` and fix `error` findings.
-2. Screenshot at 375px, 768px, 1024px and 1440px (preview_screenshot when
+2. Screenshot at 390px, 768px, 1024px and 1440px (preview_screenshot when
    available). Look for horizontal scrolling, overlapping text, clipped
    buttons, and tap targets that are too close together (keep >= 8px apart).
 3. Zoom to 200% at desktop width: content must reflow without loss (WCAG 1.4.10).

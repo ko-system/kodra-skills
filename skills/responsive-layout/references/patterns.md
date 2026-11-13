@@ -110,7 +110,7 @@ Keep the primary action reachable without scrolling past the keyboard.
 ## Hero split
 
 ```tsx
-<section className="mx-auto grid max-w-7xl items-center gap-10 px-5 py-12 md:grid-cols-2 lg:py-20">
+<section className="mx-auto grid max-w-container items-center gap-10 px-gutter py-section md:grid-cols-2">
   <div className="order-2 md:order-1">...</div>
   <img
     className="order-1 aspect-[4/3] w-full rounded-2xl object-cover md:order-2"
