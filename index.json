@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "catalogId": "kodra-skills",
-  "generatedAt": "2026-11-12T16:26:30Z",
-  "contentCommit": "ddd8ca684c2ef467a424ea29f2aa9acf04b44519",
-  "baseUrl": "https://raw.githubusercontent.com/ko-system/kodra-skills/ddd8ca684c2ef467a424ea29f2aa9acf04b44519/",
+  "generatedAt": "2026-11-13T06:27:31Z",
+  "contentCommit": "a1e707d1b22c74f336f22332618172e432b756e0",
+  "baseUrl": "https://raw.githubusercontent.com/ko-system/kodra-skills/a1e707d1b22c74f336f22332618172e432b756e0/",
   "skills": [
     {
       "slug": "accessibility-audit",
@@ -151,8 +151,8 @@
     {
       "slug": "landing-page",
       "name": "Landing page",
-      "description": "Build conversion-focused marketing pages with a clear hero, social proof, features, pricing, FAQ and a final call to action, using the app's section blocks.",
-      "version": "1.0.0",
+      "description": "Build conversion-focused marketing pages with a narrative chosen for the business and design direction, a clear hero and primary CTA, and only the sections real content supports.",
+      "version": "1.1.0",
       "tags": ["ui", "marketing", "landing", "copywriting", "conversion"],
       "featured": true,
       "hasScripts": true,
@@ -160,8 +160,8 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "dc93f50453f3aa9b00d77dbcf52ba75d439380af125848cbf6ce92304ed2fde5",
-          "size": 7086
+          "sha256": "31aee9098e41c8ef726e3f22abe943629f35975ebf653b2de719c3965ea3399c",
+          "size": 8854
         },
         {
           "path": "references/copy-formulas.md",
@@ -170,16 +170,16 @@
         },
         {
           "path": "references/section-patterns.md",
-          "sha256": "6264a4d17dfd320cca69950e1ea65a258bf305a456be0a81f9c5b3559375d346",
-          "size": 7525
+          "sha256": "8dc88093b3a10361bbae7deee37c3a0536b6ee1c23d14057c5556a5246c4ff6d",
+          "size": 7941
         },
         {
           "path": "scripts/audit_landing_sections.js",
-          "sha256": "b4c233b6c52f81d1148785d3d5b168dd563d600add0efc8dfab2d3a8e8ddc4bd",
-          "size": 12607
+          "sha256": "48eb45132395b521a0c8f74fba795b4b8ee097a82f11727f7f82e85c9642c2bc",
+          "size": 13288
         }
       ],
-      "packageSha256": "2814a4ed6f4ddb90902fb8297b0fe93a7527d5b3bacb499bf18d1d3a333e84c9"
+      "packageSha256": "305133c903205ba049736d136d16751900d0e405b7a9125b918d07c7eb3a7a54"
     },
     {
       "slug": "performance-web-vitals",
@@ -236,7 +236,7 @@
       "slug": "responsive-layout",
       "name": "Responsive layout",
       "description": "Mobile-first layouts with Tailwind breakpoints, fluid type, 44px touch targets, safe areas and container queries, so pages work from 320px phones to wide desktops.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "tags": ["ui", "responsive", "mobile", "tailwind", "layout"],
       "featured": false,
       "hasScripts": true,
@@ -244,13 +244,13 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "ba7226bca9c91dc2862cae47780ed7ff5f2bab2b22d19e5f132e628212178512",
-          "size": 6915
+          "sha256": "675a56e26611fccf276a057969062106c6ce815d3fdbb0561c66ef56e0af355e",
+          "size": 8445
         },
         {
           "path": "references/patterns.md",
-          "sha256": "952bd0210adbe63fc33f17ad708e2519eb0918ad370cb6292baf4df6769cb369",
-          "size": 5522
+          "sha256": "21ac5a43a1f8c819edf4fb2cbb1f62d40b218d4a91925a4f70e62725e7952921",
+          "size": 5529
         },
         {
           "path": "scripts/find_fixed_widths.js",
@@ -258,7 +258,7 @@
           "size": 7792
         }
       ],
-      "packageSha256": "953e8d1de4ffba02aea216a7617c75d09680406c448593c02d22d9c02d4d83dc"
+      "packageSha256": "4a5b39d88685ec70eb3901b3e5c9996109be4b03cd8f7e1140e3d0e336f04742"
     },
     {
       "slug": "seo-metadata",
@@ -322,6 +322,39 @@
         }
       ],
       "packageSha256": "645830f938fb3c0849db7c8983a81fa1cd2531cebc3ab6e12d4a73a8d50b2ee8"
+    },
+    {
+      "slug": "visual-design-craft",
+      "name": "Visual design craft",
+      "description": "Make a generated site look designed for its business, not templated - direction first, spacing that explains grouping, radius by role, signature moments, art-directed imagery and a review loop.",
+      "version": "1.0.0",
+      "tags": ["ui", "design", "visual", "typography", "spacing", "review"],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "8c130c183977b5dd6e276ba81b8c7f91162aef701e1a2fb537a8413156672b50",
+          "size": 5723
+        },
+        {
+          "path": "references/design-review.md",
+          "sha256": "a3f89186cb2bd17c20c3d80d09e726af72c238211e52373d2e7f61f0249aedae",
+          "size": 2529
+        },
+        {
+          "path": "references/imagery-and-detail.md",
+          "sha256": "f09819578ec219f2b9d3eeb66f1791887de2fc884876fef5e3b000992fc9f264",
+          "size": 2850
+        },
+        {
+          "path": "references/spacing-and-alignment.md",
+          "sha256": "dfa5a7b20203bb8492792e985ad50b9feae47d5927b3513717e0d3e3686e5d08",
+          "size": 3836
+        }
+      ],
+      "packageSha256": "71e7c703a9e37fe0e62d20044b2eefcd30b4fad17c2f5cabf7ae7773fb591e2e"
     }
   ]
 }
