@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "catalogId": "kodra-skills",
-  "generatedAt": "2026-11-13T06:27:31Z",
-  "contentCommit": "a1e707d1b22c74f336f22332618172e432b756e0",
-  "baseUrl": "https://raw.githubusercontent.com/ko-system/kodra-skills/a1e707d1b22c74f336f22332618172e432b756e0/",
+  "generatedAt": "2026-11-19T03:42:42Z",
+  "contentCommit": "8f8004c305515426b3a1c02dc6c532d639d8df30",
+  "baseUrl": "https://raw.githubusercontent.com/ko-system/kodra-skills/8f8004c305515426b3a1c02dc6c532d639d8df30/",
   "skills": [
     {
       "slug": "accessibility-audit",
@@ -37,7 +37,7 @@
       "slug": "crud-dashboard",
       "name": "CRUD admin dashboard",
       "description": "Admin and back-office screens with data tables, search and filters, server-side pagination, sorting, create/edit dialogs, bulk actions, confirmations and empty states.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "tags": ["ui", "dashboard", "admin", "crud", "tables"],
       "featured": true,
       "hasScripts": false,
@@ -45,16 +45,16 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "297f1b2148c322d7905426b54331dbda41a2b99575b76877bac3c86142ea78aa",
+          "sha256": "59112179d92aba5d7eb69c25792adb304a0c7912473c7885623be1c543853883",
           "size": 6297
         },
         {
           "path": "references/data-table.md",
-          "sha256": "2cd03a94cef61122c2a3574a702bdb8f1326c787359b80f6df3b509ebcb49fa4",
-          "size": 17826
+          "sha256": "837ab7b467f0e1b955d4294a7be938e402841ee3067b621b4eb55a22eaae3977",
+          "size": 17907
         }
       ],
-      "packageSha256": "5db87fae967a6b83e13e0f5b1f34132ed226866284bf01366945e239d1d1f24f"
+      "packageSha256": "bf4782da2685fb6b0f674590e743844cead5bae545fc375ffc0381f2d342679d"
     },
     {
       "slug": "data-fetching-states",
@@ -106,7 +106,7 @@
       "slug": "ecommerce-checkout",
       "name": "E-commerce checkout",
       "description": "Cart state, server-priced Stripe Checkout redirects, verified webhooks, idempotent order states and success/cancel pages, without exposing secret keys or trusting client prices.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "tags": ["ecommerce", "payments", "stripe", "cart", "orders"],
       "featured": false,
       "hasScripts": false,
@@ -114,16 +114,16 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "d44b7b62a3a4cbd319073ba0a4e324c71df8c6933b489a8259a5d73bcf94bb49",
-          "size": 7533
+          "sha256": "71f6128fe86130d875f62c9b9bf727520bf6e311291efdd9092ce56f32300684",
+          "size": 7685
         },
         {
           "path": "references/server-routes.md",
-          "sha256": "ca79f3f9ba24bd2fe231d70df7a4aef3ecb58b99d161e931d6ab8b7ede71de61",
-          "size": 10997
+          "sha256": "5d0571c27d8964320fcd00526da7e51a3565e4bd36c05abd7ca855b9f6815f8d",
+          "size": 11233
         }
       ],
-      "packageSha256": "4d7227402c961499897e0d68457c32db8e831a0b4711324d41e6c6ff3b506b76"
+      "packageSha256": "0caad40cc480c667830ca557f9b23d21399ac75b4ecd096b26acab43212f1a86"
     },
     {
       "slug": "forms-validation",
@@ -180,6 +180,38 @@
         }
       ],
       "packageSha256": "305133c903205ba049736d136d16751900d0e405b7a9125b918d07c7eb3a7a54"
+    },
+    {
+      "slug": "line-integration",
+      "name": "LINE integration",
+      "description": "LINE Login (OAuth 2.1/OIDC with PKCE), LIFF apps and LINE Messaging API bots with server-side ID-token verification, webhook signature checks, reply/push and signed app sessions.",
+      "version": "1.0.0",
+      "tags": [
+        "line",
+        "auth",
+        "login",
+        "liff",
+        "chatbot",
+        "webhook",
+        "thai",
+        "messaging"
+      ],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "eabbda5fc5c2ce6fb816d902af6c5cde942c2c9587d6921aeb19a1af53712227",
+          "size": 8916
+        },
+        {
+          "path": "references/routes.md",
+          "sha256": "7310cff7b96023419eebbec117acba48405184b1becd078f4700e5ca6eead2b9",
+          "size": 23728
+        }
+      ],
+      "packageSha256": "2eee5c949aa13b9e42362da2e809e9170904806fd79cd6b2caf2a81413588053"
     },
     {
       "slug": "performance-web-vitals",
@@ -291,8 +323,8 @@
     {
       "slug": "thai-localization",
       "name": "Thai localization",
-      "description": "Thai-language apps done right with Thai fonts and line-height, word-aware line breaking via Intl.Segmenter, Buddhist-era dates, THB formatting, Thai addresses and phones, and i18n setup.",
-      "version": "1.0.0",
+      "description": "Thai apps done right - Thai fonts, line breaking, Buddhist-era dates, THB, address forms with open province data, Thai ID checks, receipts/tax invoices, PDPA consent and i18n.",
+      "version": "1.1.0",
       "tags": [
         "i18n",
         "thai",
@@ -307,8 +339,13 @@
       "files": [
         {
           "path": "SKILL.md",
-          "sha256": "d33c7e45e7ee3a06bbc4b54565065a630d1cb09076df9985aaabf31d4f53428e",
-          "size": 8484
+          "sha256": "1e75011d46e648a163344962553298d41bace46fb216d720699bac6fd22e6880",
+          "size": 9818
+        },
+        {
+          "path": "references/address-and-forms.md",
+          "sha256": "887380b6eee7564b7c23ce5b8ceb9f98105c80cf4d454ef2bc43790f538881a1",
+          "size": 4841
         },
         {
           "path": "references/i18n-setup.md",
@@ -316,12 +353,49 @@
           "size": 7538
         },
         {
+          "path": "references/receipts-and-pdpa.md",
+          "sha256": "d258d2e24df52606cdfcb277fd5783c35769968a3c049b193a7fb23b1364fe7f",
+          "size": 6318
+        },
+        {
           "path": "scripts/find_hardcoded_strings.js",
           "sha256": "801fc2f6ed655ad3f8d6d2a10953e6092e9da8435d3e6351346d2fe8cd778cde",
           "size": 10119
         }
       ],
-      "packageSha256": "645830f938fb3c0849db7c8983a81fa1cd2531cebc3ab6e12d4a73a8d50b2ee8"
+      "packageSha256": "6bb72ad1cfa97706f54206fa3fcd3e16acf32aafd69e751e977d44ba08e84526"
+    },
+    {
+      "slug": "thai-payments",
+      "name": "Thai payments",
+      "description": "PromptPay QR (EMVCo payload, honest manual confirmation) and Omise (Opn Payments) card and PromptPay charges with server-side pricing, ref_id idempotency, verified webhooks and payment polling.",
+      "version": "1.0.0",
+      "tags": [
+        "payments",
+        "promptpay",
+        "omise",
+        "opn",
+        "thai",
+        "ecommerce",
+        "webhook",
+        "qr"
+      ],
+      "featured": false,
+      "hasScripts": false,
+      "license": "MIT",
+      "files": [
+        {
+          "path": "SKILL.md",
+          "sha256": "7ac3c2b6259f98c8583ba07beddca18e18973076d4d542496d9dc170f015b9da",
+          "size": 9461
+        },
+        {
+          "path": "references/server-routes.md",
+          "sha256": "79eb43397318c78007e3fe224e920ee0457f5335742f294188f814abcb1c0750",
+          "size": 13917
+        }
+      ],
+      "packageSha256": "0ccc7deacc241d8b89de2bd03c6efd13db10850c8d8e49f98e1e24374df783b9"
     },
     {
       "slug": "visual-design-craft",
