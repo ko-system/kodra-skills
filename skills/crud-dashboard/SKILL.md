@@ -1,7 +1,7 @@
 ---
 slug: crud-dashboard
 name: CRUD admin dashboard
-version: 1.0.0
+version: 1.0.1
 description: Admin and back-office screens with data tables, search and filters, server-side pagination, sorting, create/edit dialogs, bulk actions, confirmations and empty states.
 when_to_use: When building an admin panel, back office, inventory, orders, bookings, members or any list-plus-detail screen where staff create, edit, filter and delete records.
 tags: [ui, dashboard, admin, crud, tables]

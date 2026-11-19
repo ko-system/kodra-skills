@@ -194,12 +194,14 @@ raw body: never call `req.json()` before verifying.
 ## Nitro routes (Vite + Nitro)
 
 ```ts
-// server/api/checkout.post.ts
+// server/routes/api/checkout.post.ts
 import Stripe from "stripe";
-import { getDb } from "../utils/db";
-import { buildLineItems, checkoutSchema } from "../utils/checkout";
+import { defineHandler } from "nitro";
+import { createError, getRequestURL, readBody } from "nitro/h3";
+import { getDb } from "../../utils/db";
+import { buildLineItems, checkoutSchema } from "../../utils/checkout";
 
-export default defineEventHandler(async (event) => {
+export default defineHandler(async (event) => {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key)
     throw createError({
@@ -242,14 +244,16 @@ export default defineEventHandler(async (event) => {
 ```
 
 ```ts
-// server/api/stripe/webhook.post.ts
+// server/routes/api/stripe/webhook.post.ts
 import Stripe from "stripe";
-import { handleStripeEvent } from "../../utils/stripe-events";
+import { defineHandler } from "nitro";
+import { createError, getRequestHeaders, readRawBody } from "nitro/h3";
+import { handleStripeEvent } from "../../../utils/stripe-events";
 
-export default defineEventHandler(async (event) => {
+export default defineHandler(async (event) => {
   const key = process.env.STRIPE_SECRET_KEY;
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
-  const signature = getHeader(event, "stripe-signature");
+  const signature = getRequestHeaders(event)["stripe-signature"];
   const raw = await readRawBody(event, "utf8");
   if (!key || !secret || !signature || !raw)
     throw createError({ statusCode: 400, statusMessage: "Bad request" });

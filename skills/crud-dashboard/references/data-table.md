@@ -484,8 +484,10 @@ function OrderRowActions({ order }: { order: Order }) {
 ## 5. API route (local Postgres, Nitro; same logic in a Next.js route handler)
 
 ```ts
-// server/api/orders.get.ts
-import { getDb } from "../utils/db";
+// server/routes/api/orders.get.ts
+import { defineHandler } from "nitro";
+import { getQuery } from "nitro/h3";
+import { getDb } from "../../utils/db";
 
 const SORTS: Record<string, string> = {
   number: "number",
@@ -495,7 +497,7 @@ const SORTS: Record<string, string> = {
 };
 const STATUSES = new Set(["pending", "paid", "shipped", "cancelled"]);
 
-export default defineEventHandler(async (event) => {
+export default defineHandler(async (event) => {
   const q = getQuery(event);
   const sort = SORTS[String(q.sort)] ?? "created_at";
   const dir = q.dir === "asc" ? "ASC" : "DESC";

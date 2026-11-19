@@ -1,15 +1,19 @@
 ---
 slug: thai-localization
 name: Thai localization
-version: 1.0.0
-description: Thai-language apps done right with Thai fonts and line-height, word-aware line breaking via Intl.Segmenter, Buddhist-era dates, THB formatting, Thai addresses and phones, and i18n setup.
-when_to_use: When an app's audience is in Thailand, when the owner writes in Thai, when adding a Thai/English language switch, or when Thai text clips, wraps mid-word, shows wrong dates or formats baht incorrectly.
+version: 1.1.0
+description: Thai apps done right - Thai fonts, line breaking, Buddhist-era dates, THB, address forms with open province data, Thai ID checks, receipts/tax invoices, PDPA consent and i18n.
+when_to_use: When an app's audience is in Thailand, the owner writes in Thai, or the app needs a Thai/English switch, Thai addresses or IDs, receipts or tax invoices, PDPA consent, or fixes for clipped text, mid-word wrapping, wrong dates or baht formatting.
 tags: [i18n, thai, localization, typography, dates, currency]
 roles: [frontend-developer, localization-specialist, ui-designer, copywriter]
 license: MIT
 references:
   - file: references/i18n-setup.md
     description: i18next setup for Vite and next-intl for Next.js, language switching, Thai formatting helpers, address and phone formats, and a Thai UI glossary.
+  - file: references/address-and-forms.md
+    description: Province/district/sub-district/postcode forms with MIT-licensed open data, the Thai national ID checksum, and Buddhist-era date input and display.
+  - file: references/receipts-and-pdpa.md
+    description: Receipts, abbreviated and full tax invoices (required fields, VAT, numbering) and a PDPA privacy-notice and consent checklist with Thai copy.
 scripts:
   - name: find_hardcoded_strings
     file: scripts/find_hardcoded_strings.js
@@ -177,12 +181,20 @@ new Intl.NumberFormat("th-TH").format(1234567.5); // "1,234,567.5"
   digits only (or E.164 `+66812345678`).
 - Address order: house number, village/building, soi, road, sub-district
   (ตำบล or แขวง in Bangkok), district (อำเภอ or เขต), province, postal code.
-  Use separate fields for province and postal code; a province `Select` with
-  all 77 provinces helps.
+  Use cascading province → district → sub-district selects that fill the
+  postal code, from an MIT-licensed dataset — see
+  `references/address-and-forms.md` (data source, form, zod schema).
+- National ID / tax ID: 13 digits with a mod-11 check digit; validate it,
+  display `1-1017-00230-70-8`, mask it in lists and never log it.
 - Names: optional title (นาย, นาง, นางสาว), first name, last name; many users
   prefer a nickname for display.
-- Payments: PromptPay and mobile banking are expected alongside cards (see the
-  ecommerce-checkout skill).
+- Receipts and tax invoices (ใบเสร็จรับเงิน, ใบกำกับภาษีอย่างย่อ/เต็มรูป), VAT
+  and document numbering: `references/receipts-and-pdpa.md`.
+- Personal data: follow the PDPA checklist in `references/receipts-and-pdpa.md`
+  (privacy notice, separate unticked consent per purpose, easy withdrawal).
+- Payments: PromptPay and mobile banking are expected alongside cards — use
+  the thai-payments skill (PromptPay QR, Omise). LINE Login, LIFF and LINE OA
+  bots: the line-integration skill.
 
 ## Checklist
 
@@ -192,6 +204,9 @@ new Intl.NumberFormat("th-TH").format(1234567.5); // "1,234,567.5"
 - [ ] Headings and buttons wrap at word boundaries (no mid-word breaks).
 - [ ] Dates via `Intl` with `th-TH` and `Asia/Bangkok`; money via THB formatter.
 - [ ] Validation messages, toasts, empty states and emails in Thai.
+- [ ] Address forms use province/district/sub-district selects with an
+      editable postal code; Thai IDs pass the checksum.
+- [ ] Privacy notice and per-purpose consent follow the PDPA checklist.
 - [ ] Ran `find_hardcoded_strings`; strings are translated (bilingual apps) or
       consistently Thai (Thai-only apps).
 

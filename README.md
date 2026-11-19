@@ -35,7 +35,9 @@ version bump; the publish workflow rejects unbumped changes.
 | `crud-dashboard`         | Admin tables, filters, pagination, bulk actions, empty states           |                          |
 | `database-schema-design` | Relational modelling, indexes, constraints, row-level security notes    |                          |
 | `ecommerce-checkout`     | Cart state, Stripe Checkout redirect, order states, webhooks            |                          |
-| `thai-localization`      | Thai typography, line breaking, Buddhist-era dates, THB, i18n setup     | `find_hardcoded_strings` |
+| `thai-localization`      | Thai typography, line breaking, Buddhist-era dates, THB, addresses, IDs, tax invoices, PDPA | `find_hardcoded_strings` |
+| `thai-payments`          | PromptPay QR and Omise (Opn) card/PromptPay charges with verified webhooks |                          |
+| `line-integration`       | LINE Login, LIFF and Messaging API bots with server-side verification   |                          |
 | `performance-web-vitals` | LCP, CLS and INP: images, lazy loading, code splitting, fonts           | `find_large_assets`      |
 | `qa-smoke-tests`         | Playwright smoke tests for generated apps                               |                          |
 

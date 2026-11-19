@@ -1,7 +1,7 @@
 ---
 slug: ecommerce-checkout
 name: E-commerce checkout
-version: 1.0.0
+version: 1.0.1
 description: Cart state, server-priced Stripe Checkout redirects, verified webhooks, idempotent order states and success/cancel pages, without exposing secret keys or trusting client prices.
 when_to_use: When adding a cart, buy button, checkout, payments, order history or order management to a store, booking or ticketing app, or when reviewing an existing checkout for security problems.
 tags: [ecommerce, payments, stripe, cart, orders]
@@ -18,7 +18,9 @@ references:
 Use Stripe Checkout (hosted payment page) by redirect: the server creates a
 Checkout Session and returns its URL; the browser navigates there; Stripe
 calls your webhook when payment completes. This keeps card data and secret
-keys off your app and supports cards, PromptPay and wallets for THB.
+keys off your app and supports cards, PromptPay and wallets for THB. For
+Thai shops that prefer Omise (Opn Payments) or a free PromptPay QR, use the
+thai-payments skill instead.
 
 ## Non-negotiable security rules
 
@@ -139,8 +141,9 @@ const checkout = useMutation({
 Vite apps need a server layer for checkout. If the app has no `server/`
 directory yet, enable the Nitro server layer first (KODRA's `enable_nitro`
 tool, or `setup_local_database` when a database is also needed). Routes:
-`server/api/checkout.post.ts`, `server/api/stripe/webhook.post.ts`,
-`server/api/orders/by-session.get.ts`. Add `stripe` to dependencies. If
+`server/routes/api/checkout.post.ts`, `server/routes/api/stripe/webhook.post.ts`,
+`server/routes/api/orders/by-session.get.ts` (never `server/api/`). Add
+`stripe` to dependencies. If
 the app uses Supabase as its backend instead, implement the same two
 endpoints as Supabase Edge Functions. Full code: `references/server-routes.md`.
 </vite-nitro-only>
